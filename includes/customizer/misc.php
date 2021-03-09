@@ -19,6 +19,14 @@ function ju_misc_customizer_section( $wp_customize ) {
         'default'       =>  0,
     ] );
 
+    $wp_customize->add_setting( 'ju_show_header_popular_posts', [
+        'default'       =>  false,
+    ] );
+
+    $wp_customize->add_setting( 'ju_popular_post_widget_title', [
+        'default'       =>  'Breaking News',
+    ] ); 
+
     $wp_customize->add_setting( 'ju_footer_privacy_page', [
         'default'       =>  0,
     ] );
@@ -115,6 +123,30 @@ function ju_misc_customizer_section( $wp_customize ) {
             'label'     =>  __( 'File report', 'udemy' ),
             'section'   =>  'ju_misc_section',
             'settings'  =>  'ju_report_file',
+        )
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Control( 
+        $wp_customize,
+        'ju_show_header_popular_posts_widget_input',
+        array( 
+            'label'     =>  __( 'Popular posts widget show', 'udemy' ),
+            'section'   =>  'ju_misc_section',
+            'settings'  =>  'ju_show_header_popular_posts',
+            'type'      =>  'checkbox',
+            'choices'   =>  [
+                'yes'   =>  __( 'Yes', 'udemy' ),
+            ],
+        )
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Control( 
+        $wp_customize,
+        'ju_popular_posts_widget_title_input',
+        array( 
+            'label'     =>  __( 'Popular posts title', 'udemy' ),
+            'section'   =>  'ju_misc_section',
+            'settings'  =>  'ju_popular_post_widget_title',
         )
     ) );
 }
